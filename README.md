@@ -5,7 +5,7 @@ CardioGuard es un sistema integral de monitoreo cardíaco que combina hardware, 
 ## Estructura del Proyecto
 
 ### 1. Pulse Data Capture (/pulse_data_capture)
-Sistema de captura de datos del pulso cardíaco.
+Sistema de captura de datos del pulso cardíaco usando C++ y Python.
 
 #### Componentes:
 - read_data_sensor/: Módulo para lectura de datos del sensor
