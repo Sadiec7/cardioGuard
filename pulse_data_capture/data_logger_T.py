@@ -31,9 +31,9 @@ while True:
                 data = json.loads(linea)
                 data["timestamp"] = datetime.utcnow()  # Marca de tiempo
                 coleccion.insert_one(data)
-                print("✅ Insertado en MongoDB Atlas:", data)
+                print("Insertado en MongoDB Atlas:", data)
             except json.JSONDecodeError:
-                print("⚠️ Línea inválida (no JSON):", linea)
+                print("Línea inválida (no JSON):", linea)
     except KeyboardInterrupt:
         print("\n🚪 Cerrando conexión...")
         break

@@ -35,7 +35,7 @@ def actualizar(frame):
     try:
         linea_serial = ser.readline().decode('utf-8').strip()
         if linea_serial and "{" in linea_serial:
-            print("📥 Recibido:", linea_serial)
+            print("Recibido:", linea_serial)
             try:
                 data = json.loads(linea_serial)
                 
@@ -46,9 +46,9 @@ def actualizar(frame):
                     tiempos.append(datetime.utcnow())
                     linea.set_data(range(len(valores_bpm)), list(valores_bpm))
             except json.JSONDecodeError:
-                print("⚠️ Línea inválida (no JSON):", linea_serial)
+                print("Línea inválida (no JSON):", linea_serial)
     except Exception as e:
-        print("❌ Error:", e)
+        print("Error:", e)
 
     return linea,
 
