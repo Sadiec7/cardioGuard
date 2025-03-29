@@ -127,6 +127,6 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ## Contacto
 
-Tu Nombre - [@](https://twitter.com/tutwitter) - email@example.com
+Tu Nombre - Salvador Camacho Pacheco - saldiec7@gmail.com
 
 Link del Proyecto: [https://github.com/tu-usuario/cardioGuard](https://github.com/tu-usuario/cardioGuard)
