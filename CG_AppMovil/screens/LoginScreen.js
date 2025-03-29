@@ -2,13 +2,12 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-         <Image source={require('../assets/logo.png')} style={styles.logo} />
+        <Image source={require('../assets/logo.png')} style={styles.logo} />
       </View>
-
 
       <TextInput
         placeholder="Correo electrónico"
@@ -26,11 +25,14 @@ export default function LoginScreen() {
         <Text style={styles.link}>Olvidé mi contraseña</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => navigation.navigate('Home')}
+      >
         <Text style={styles.loginText}>Iniciar sesión</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
         <Text style={styles.link}>Crear cuenta</Text>
       </TouchableOpacity>
     </View>
@@ -40,7 +42,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#A8F5A8', // color verde pastel
+    backgroundColor: '#A8F5A8', 
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
@@ -48,7 +50,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 150,
     height: 150,
-    //marginBottom: 40,
     resizeMode: 'contain',
   },
   input: {
@@ -76,11 +77,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-
   logoContainer: {
     width: 160,
     height: 160,
-    borderRadius: 80, // círculo perfecto
+    borderRadius: 80, 
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',

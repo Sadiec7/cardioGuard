@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { Ionicons } from '@expo/vector-icons';
+import SideMenu from '../components/SideMenu'; // menú lateral
 
-export default function HomeScreen() {
-  // Eventos marcados
+export default function HomeScreen({ navigation }) {
+  const [showMenu, setShowMenu] = useState(false);
+  const [currentMonth, setCurrentMonth] = useState('2025-04');
+
   const markedDates = {
     '2025-04-09': {
       marked: true,
@@ -27,16 +30,21 @@ export default function HomeScreen() {
     },
   };
 
-  const [currentMonth, setCurrentMonth] = useState('2025-04');
-
-  // Verifica si el mes tiene eventos
   const monthHasEvents = Object.keys(markedDates).some((date) =>
     date.startsWith(currentMonth)
   );
 
+  const handleLogout = () => {
+    setShowMenu(false);
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Login' }],
+    });
+  };
+
   return (
     <View style={styles.container}>
-      {/* 🔝 Header superior */}
+      {/*Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
           <Image
@@ -45,12 +53,13 @@ export default function HomeScreen() {
           />
           <Text style={styles.headerText}>CardioGuard</Text>
         </View>
-        <Ionicons name="menu" size={26} color="#fff" />
+        <TouchableOpacity onPress={() => setShowMenu(!showMenu)}>
+          <Ionicons name={showMenu ? 'close' : 'menu'} size={26} color="#fff" />
+        </TouchableOpacity>
       </View>
 
-      {/* 📅 Contenedor blanco del contenido */}
+      {/* Contenido */}
       <View style={styles.whiteBox}>
-        {/* Ícono calendario + título */}
         <View style={styles.calendarTitle}>
           <View style={styles.iconCircle}>
             <Ionicons name="calendar" size={24} color="#fff" />
@@ -58,18 +67,13 @@ export default function HomeScreen() {
           <Text style={styles.title}>Calendario</Text>
         </View>
 
-        {/* Línea separadora */}
         <View style={styles.separator} />
 
-        {/* Calendario */}
         <Calendar
           monthFormat={'MMMM'}
           markedDates={markedDates}
           onMonthChange={(month) => {
-            const formatted = `${month.year}-${String(month.month).padStart(
-              2,
-              '0'
-            )}`;
+            const formatted = `${month.year}-${String(month.month).padStart(2, '0')}`;
             setCurrentMonth(formatted);
           }}
           theme={{
@@ -85,7 +89,6 @@ export default function HomeScreen() {
           style={styles.calendar}
         />
 
-        {/* Leyenda condicional */}
         {monthHasEvents && (
           <View style={styles.legendContainer}>
             <View style={styles.legendItem}>
@@ -103,6 +106,11 @@ export default function HomeScreen() {
           </View>
         )}
       </View>
+
+      {/* ☰ Menú lateral */}
+      {showMenu && (
+        <SideMenu onClose={() => setShowMenu(false)} onLogout={handleLogout} />
+      )}
     </View>
   );
 }
