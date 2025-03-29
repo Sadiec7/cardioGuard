@@ -1,0 +1,42 @@
+# =============================================
+# Archivos y carpetas específicos a ignorar
+# =============================================
+
+# Dependencias de Node.js
+node_modules/
+npm-debug.log
+
+# Entorno de desarrollo
+.env
+.env.local
+
+# MongoDB local (si usas archivos de datos)
+data/db/
+*.mongodb
+
+# Archivos de IDE/Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs y temporales
+*.log
+*.tmp
+*.pid
+
+# Sistema operativo
+.DS_Store       # macOS
+Thumbs.db       # Windows
+
+# Build/Compilación
+dist/           # Carpeta de output (TypeScript, Babel, etc.)
+build/
+*.exe
+*.apk
+*.jar
+
+# Archivos de configuración personalizados (opcional)
+config/local/   # Configs no compartidas
