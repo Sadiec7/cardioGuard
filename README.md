@@ -1,6 +1,6 @@
 # CardioGuard
 
-CardioGuard es un sistema integral de monitoreo cardíaco que combina hardware, software y análisis de datos para proporcionar seguimiento en tiempo real de la salud cardíaca.
+CardioGuard es un sistema integral de monitoreo cardíaco que combina hardware, software y análisis de datos para proporcionar seguimiento en tiempo real de la salud cardíaca y llegar a predecir con Inteligencia Artificial posibles problemas cardíacos.
 
 ## Estructura del Proyecto
 
